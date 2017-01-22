@@ -4,25 +4,22 @@ import {GamifiedApplication} from "./model/GamifiedApplication";
 
 @Component({
   selector: 'my-app',
-  template: `<h1>Hello {{name}}</h1>`,
+  template: `
+<req-res-log></req-res-log>
+<endpoints></endpoints>
+`,
 })
 export class AppComponent  {
-  name = 'Angular';
-
   constructor(
     private apiCallsService: ApiCallsService
   ) {
+
     let gameApp: GamifiedApplication = {
-      name: "testtest7",
+      name: "testtest1111",
       password: "testtest4"
     };
-    this.apiCallsService.registerPost(gameApp).subscribe(
-      res => {
-        console.log(res);
-      },
-      err => {
-        console.log(err);
-      }
-    );
+    this.apiCallsService.registerPost(gameApp);
+
+    this.apiCallsService.badgesGet().subscribe();
   }
 }
