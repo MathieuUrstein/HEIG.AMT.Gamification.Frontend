@@ -6,6 +6,7 @@ import {GamifiedApplication} from "../model/GamifiedApplication";
   selector: 'register',
   template: `
 <form>
+  <p>Registers a gamified application.</p>
   <div class="form-group">
     <label>Name</label>
     <input name="name" [(ngModel)]="name" type="text" class="form-control" placeholder="Name of the app">

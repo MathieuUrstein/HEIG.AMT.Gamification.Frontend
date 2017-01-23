@@ -6,6 +6,7 @@ import {GamifiedApplication} from "../model/GamifiedApplication";
   selector: 'auth',
   template: `
 <form>
+  <p>Logs an application in.</p>
   <div class="form-group">
     <label>Name</label>
     <input name="name" [(ngModel)]="name" type="text" class="form-control" placeholder="Name of the app">

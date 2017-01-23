@@ -1,5 +1,39 @@
-h1 {
-  color: #369;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 250%;
+.nav-tabs {
+  margin: 30px 0;
+}
+.nav-tabs > li{
+  float:none;
+  display:inline-block;
+  *display:inline; /* ie7 fix */
+  zoom:1; /* hasLayout ie7 trigger */
+}
+.tab-content p {
+  background-color: #dff3ff;
+  border-radius: 5px;
+  padding: 10px;
+}
+.tab-content hr {
+  margin-bottom: 40px;
+}
+.nav-item {
+  text-align:center;
+}
+td {
+  height: 105%;
+  font-size: 14px;
+}
+#reqCol {
+  background: #fff4c4;
+  padding: 20px;
+}
+#resCol {
+  background-color: #ffd2cc;
+  padding: 20px;
+}
+.container {
+  margin-bottom: 30px;
+}
+.main-tabs {
+  font-size: 18px;
+  font-weight: 600;
 }

@@ -5,7 +5,7 @@ import { ApiCallsService } from '../api/ApiCalls.service';
   selector: 'endpoints',
   template: `
 <div class="container">
-  <ul class="nav nav-tabs" role="tablist">
+  <ul class="nav nav-tabs main-tabs" role="tablist">
     <li class="nav-item">
       <a class="nav-link active" data-toggle="tab" href="#register" role="tab">register</a>
     </li>

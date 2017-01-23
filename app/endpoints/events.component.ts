@@ -6,6 +6,7 @@ import {Event} from "../model/Event";
   selector: 'events',
   template: `
 <form>
+  <p>Creates an event.</p>
   <div class="form-group">
     <label>Type</label>
     <input name="type" [(ngModel)]="type" type="text" class="form-control" placeholder="Type of event">

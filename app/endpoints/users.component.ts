@@ -10,6 +10,7 @@ import { ApiCallsService } from '../api/ApiCalls.service';
 </form>
 <hr>
 <form>
+  <p>Retrieves a specified user.</p>
   <div class="form-group">
     <label>Username</label>
     <input name="username" [(ngModel)]="username" type="text" class="form-control" placeholder="User to retrieve">

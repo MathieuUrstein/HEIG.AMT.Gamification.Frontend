@@ -5,8 +5,8 @@ import { ApiCallsService } from '../api/ApiCalls.service';
   selector: 'req-res-log',
   template: `<table class="table">
   <tr>
-    <td *ngIf="lastRequest" style="width: 50%; display: inline-block">
-      <h2>Last request :</h2>
+    <td *ngIf="lastRequest" style="width: 50%; display: inline-block" id="reqCol">
+      <h3>Last request :</h3>
       <div><b>Path : </b>{{lastRequest.path}}</div>
       <div *ngIf="lastRequest.method === 0"><b>Method : </b>Get</div>
       <div *ngIf="lastRequest.method === 1"><b>Method : </b>Post</div>
@@ -16,8 +16,8 @@ import { ApiCallsService } from '../api/ApiCalls.service';
       <div><b>Headers : </b><pre>{{lastRequest.headers | json}}</pre></div>
       <div><b>Body : </b><pre>{{lastRequest.body | json}}</pre></div>
     </td>
-    <td *ngIf="lastResponse" style="width: 50%; display: inline-block">
-      <h2>Last response :</h2>
+    <td *ngIf="lastResponse" style="width: 50%; display: inline-block" id="resCol">
+      <h3>Last response :</h3>
       <div><b>Path : </b>{{lastResponse.url}}</div>
       <div><b>Status : </b>{{lastResponse.status}}</div>
       <div><b>Headers : </b><pre>{{lastResponse.headers | json}}</pre></div>
@@ -50,10 +50,10 @@ export class ReqResLogsComponent  {
     });
     this.apiCallsService.lastResponse.subscribe(res => {
       let body: string;
-      if ((<any> res)._body == "" || (<any> res).body == null || (<any> res).body == "undefined") {
+      if ((<any> res)._body == "" || (<any> res)._body == null || (<any> res)._body == "undefined") {
         body = "{}";
       } else {
-        body = (<any> res).body;
+        body = (<any> res)._body;
       }
       this.lastResponse = {
         url: res.url,
