@@ -50,10 +50,10 @@ export class ReqResLogsComponent  {
     });
     this.apiCallsService.lastResponse.subscribe(res => {
       let body: string;
-      if (res._body == "" || res._body == null || res._body == "undefined") {
+      if ((<any> res)._body == "" || (<any> res).body == null || (<any> res).body == "undefined") {
         body = "{}";
       } else {
-        body = res._body;
+        body = (<any> res).body;
       }
       this.lastResponse = {
         url: res.url,

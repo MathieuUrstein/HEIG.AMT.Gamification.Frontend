@@ -33,7 +33,7 @@ export class ApiCallsService {
       if (response.status === 204) {
         return undefined;
       } else {
-        return response._body;
+        return (<any> response)._body;
       }
     })
   }
