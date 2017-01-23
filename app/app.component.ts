@@ -12,14 +12,5 @@ import {GamifiedApplication} from "./model/GamifiedApplication";
 export class AppComponent  {
   constructor(
     private apiCallsService: ApiCallsService
-  ) {
-
-    let gameApp: GamifiedApplication = {
-      name: "testtest1111",
-      password: "testtest4"
-    };
-    this.apiCallsService.registerPost(gameApp);
-
-    this.apiCallsService.badgesGet().subscribe();
-  }
+  ) {}
 }

@@ -2,12 +2,12 @@ import { Injectable }                                         from '@angular/cor
 import { Http, Headers, Response }                            from '@angular/http';
 import { RequestMethod, RequestOptions, RequestOptionsArgs }  from '@angular/http';
 import { Observable }                                         from 'rxjs/Observable';
-import { Subject }                                            from "rxjs/Subject";
 import { EmitRequest }                                        from "../model/EmitRequest";
 import { ReplaySubject }                                      from "rxjs/ReplaySubject";
 import * as models                                            from '../model/models';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/finally';
 
 @Injectable()
 export class ApiCallsService {
@@ -16,7 +16,7 @@ export class ApiCallsService {
   private defaultHeaders: Headers = new Headers();
 
   lastRequest: ReplaySubject<EmitRequest> = new ReplaySubject();
-  lastResponse: Subject<Response> = new Subject();
+  lastResponse: ReplaySubject<Response> = new ReplaySubject();
 
   constructor(
     protected http: Http
@@ -33,7 +33,7 @@ export class ApiCallsService {
       if (response.status === 204) {
         return undefined;
       } else {
-        return response.json();
+        return response._body;
       }
     })
   }
@@ -60,10 +60,6 @@ export class ApiCallsService {
       .map((res: Response) => {
         this.logResponse(res);
         return res;
-      })
-      .catch((res: Response) => {
-        this.logResponse(res);
-        return [];
       });
   }
 
@@ -75,14 +71,14 @@ export class ApiCallsService {
     });
   }
 
-  private logRequest(path: string, requestOptions: RequestOptionsArgs) {
+  public logRequest(path: string, requestOptions: RequestOptionsArgs) {
     this.lastRequest.next({
       path: path,
       requestOptions: requestOptions
     });
   }
 
-  private logResponse(response: Response) {
+  public logResponse(response: Response) {
     this.lastResponse.next(response);
   }
 
@@ -96,6 +92,9 @@ export class ApiCallsService {
       res => {
         let headers: Headers = res.headers;
         this.addApiKey(headers.get('Authorization'));
+      },
+      err => {
+        this.logResponse(err);
       }
     );
   }
@@ -229,6 +228,10 @@ export class ApiCallsService {
       res => {
         let headers: Headers = res.headers;
         this.addApiKey(headers.get('Authorization'));
+      },
+      err => {
+        console.log(err);
+        this.logResponse(err);
       }
     );
   }

@@ -13,9 +13,10 @@ import {PointScalesComponent} from "./endpoints/pointscales.component";
 import {RegisterComponent} from "./endpoints/register.component";
 import {RulesComponent} from "./endpoints/rules.component";
 import {UsersComponent} from "./endpoints/users.component";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
-  imports:      [ BrowserModule, HttpModule ],
+  imports:      [ BrowserModule, HttpModule, FormsModule ],
   declarations: [
     AppComponent,
     ReqResLogsComponent,
