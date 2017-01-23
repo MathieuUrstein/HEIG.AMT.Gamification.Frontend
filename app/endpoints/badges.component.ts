@@ -5,28 +5,48 @@ import {Badge} from "../model/Badge";
 @Component({
   selector: 'badges',
   template: `
-<form>
-  <p>Get badges of the current application</p>
-  <button (click)="getBadges()" type="submit" class="btn btn-primary">Submit</button>
-</form>
-<hr>
-<form>
-  <p>Get a badge of the current application</p>
-  <div class="form-group">
-    <label>Name</label>
-    <input name="badgename" [(ngModel)]="name" type="text" class="form-control" placeholder="Badge to retrieve">
+<div class="container">
+  <ul class="nav nav-tabs second-tabs" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#badges-get-badges" role="tab">GET Badges</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#badges-get-badge" role="tab">GET Badge</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#badges-post-badge" role="tab">POST Badge</a>
+    </li>
+  </ul>
+  
+  <div class="tab-content">
+    <div class="tab-pane active" id="badges-get-badges" role="tabpanel">
+      <form>
+        <p>Get badges of the current application</p>
+        <button (click)="getBadges()" type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    <div class="tab-pane" id="badges-get-badge" role="tabpanel">
+      <form>
+        <p>Get a badge of the current application</p>
+        <div class="form-group">
+          <label>Name</label>
+          <input name="badgename" [(ngModel)]="name" type="text" class="form-control" placeholder="Badge to retrieve">
+        </div>
+        <button (click)="getBadge()" type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    <div class="tab-pane" id="badges-post-badge" role="tabpanel">
+      <form>
+        <p>Create a badge for the current application</p>
+        <div class="form-group">
+          <label>Name</label>
+          <input name="badgename" [(ngModel)]="name" type="text" class="form-control" placeholder="Badge to create">
+        </div>
+        <button (click)="addBadge()" type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
   </div>
-  <button (click)="getBadge()" type="submit" class="btn btn-primary">Submit</button>
-</form>
-<hr>
-<form>
-  <p>Create a badge for the current application</p>
-  <div class="form-group">
-    <label>Name</label>
-    <input name="badgename" [(ngModel)]="name" type="text" class="form-control" placeholder="Badge to create">
-  </div>
-  <button (click)="addBadge()" type="submit" class="btn btn-primary">Submit</button>
-</form>
+</div>
 `,
 })
 export class BadgesComponent {
