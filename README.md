@@ -13,10 +13,17 @@ To deploy our app, you will need the following:
 You obviously need the Gamification application running for more informations please look at :
 [the gamification platform project](https://github.com/MathieuUrstein/HEIG.AMT.Gamification)
 
-When the gamification application is running please provide the url :
+When the gamification application is running, since it does not provide a cross Cross Orinig Requests service,
+You need to go through a proxy.
+To do that, provide the lite server url :
 
     /app/api/ApiCalls.service.ts
     protected basePath = 'http://localhost:3000/api';
+    
+Then tell the proxy where to find the api :
+
+    /bs-config.js
+    target: 'http://localhost:8080',
     
 You can then install the dependencies by doing
 
